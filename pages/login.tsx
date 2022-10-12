@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Loader from "../components/Loader";
 import useAuth from "../hooks/useAuth";
 
 interface Inputs {
@@ -11,7 +12,7 @@ interface Inputs {
 
 const Login = () => {
   const [login, setLogin] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, loading } = useAuth();
   const {
     register,
     handleSubmit,
@@ -83,7 +84,7 @@ const Login = () => {
           }}
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
         >
-          Sign In
+          {loading ? <Loader color="dark:fill-gray-300" /> : "Sign In"}
         </button>
 
         <div className="text-[gray]">
